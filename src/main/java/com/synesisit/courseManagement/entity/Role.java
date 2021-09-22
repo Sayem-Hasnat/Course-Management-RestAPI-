@@ -12,6 +12,7 @@ public class Role {
     @Column(name = "Authority", nullable = false)
     private String Authority;
 
+
     public String getAuthority() {
         return Authority;
     }

@@ -1,15 +1,13 @@
 package com.synesisit.courseManagement.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity(name = "User_Details")
-@Getter
-@Setter
+
 public class User {
     @Id
     @Column(name = "user_id", nullable = false)
@@ -24,5 +22,36 @@ public class User {
     @Column(name = "user_mail", nullable = false)
     private String userMail;
 
-    
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserPass() {
+        return userPass;
+    }
+
+    public void setUserPass(String userPass) {
+        this.userPass = userPass;
+    }
+
+    public String getUserMail() {
+        return userMail;
+    }
+
+    public void setUserMail(String userMail) {
+        this.userMail = userMail;
+    }
 }
