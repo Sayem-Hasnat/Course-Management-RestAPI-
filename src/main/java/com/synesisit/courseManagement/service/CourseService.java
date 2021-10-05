@@ -13,12 +13,32 @@ public class CourseService {
     @Autowired
     CourseRepository courseRepository;
 
-    public  List<Course> getAllCourse(){
-            return courseRepository.findAllByIsExistTrue();
-        }
+    public List<Course> getAllCourse() {
+        return courseRepository.findAllByIsExistTrue();
+    }
 
-    public void save(Course courseRequest) {
+    public Course save(Course courseRequest) {
         courseRepository.save(courseRequest);
+        return courseRequest;
+    }
+
+    public List<Course> saveCourseList(List<Course> courseListRequest) {
+        return courseRepository.saveAll(courseListRequest);
+    }
+
+
+    public Course getCourseById(Long courseId) {
+        return courseRepository.findById(courseId).get();
+    }
+
+    public Course updateCourseById(Long courseId, Course courseRequestBody) {
+        Course course = courseRepository.findById(courseId).get();
+        course.setCourseCode(courseRequestBody.getCourseCode());
+        course.setCourseName(courseRequestBody.getCourseName());
+        course.setCourseId((long) courseRequestBody.getCourseCredit());
+        course.setExist(courseRequestBody.getExist());
+        courseRepository.save(course);
+        return courseRepository.findById(courseId).get();
     }
 }
 
