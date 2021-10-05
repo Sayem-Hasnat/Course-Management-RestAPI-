@@ -37,6 +37,10 @@ public class CourseService {
         course.setCourseName(courseRequestBody.getCourseName());
         course.setCourseId((long) courseRequestBody.getCourseCredit());
         course.setExist(courseRequestBody.getExist());
+
+        course.setDepartmentList(courseRequestBody.getDepartmentList());
+        course.setStudentList(courseRequestBody.getStudentList());
+        
         courseRepository.save(course);
         return courseRepository.findById(courseId).get();
     }
