@@ -40,7 +40,7 @@ public class CourseService {
 
         course.setDepartmentList(courseRequestBody.getDepartmentList());
         course.setStudentList(courseRequestBody.getStudentList());
-        
+
         courseRepository.save(course);
         return courseRepository.findById(courseId).get();
     }

@@ -40,11 +40,7 @@ public class CourseController {
         return courseService.updateCourseById(courseId, courseRequestBody);
     }
 
-    @PutMapping("/course/{courseId}")
-    public Course deleteCourseById(@PathVariable("courseId") Long courseId,
-                                   @RequestBody Course courseRequestBody) {
-        return courseService.updateCourseById(courseId, courseRequestBody);
-    }
+
 
 }
 
