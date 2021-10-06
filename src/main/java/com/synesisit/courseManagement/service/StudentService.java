@@ -22,9 +22,10 @@ public class StudentService {
     }
 
     public Student getSingleStudent(Long studentId) {
-        Student student = studentRepository.findById(studentId).get();
-        if (student.isExist() == true) {
-            return studentRepository.save(student);
+      //  studentRepository.findById(studentId).get();
+        Student student = null;
+        if (studentRepository.findById(studentId).get().isExist() == true) {
+             student =  studentRepository.findById(studentId).get();
         } else {
             System.out.println("This Id Is not Active or doesn't Exist");
         }
