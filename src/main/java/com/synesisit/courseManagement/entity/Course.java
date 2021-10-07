@@ -9,6 +9,7 @@ import java.util.List;
 @Entity
 public class Course {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "course_id", nullable = false)
     private Long courseId;
     @Column(name = "course_name", nullable = false)
@@ -17,17 +18,19 @@ public class Course {
     private String courseCode;
     @Column(name = "course_credit", nullable = false)
     private double courseCredit;
+    @Column(name = "isExist")
+    private boolean isExist = true;
 
     //Entity Relations
 
-    @JsonIgnore
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "department_course",
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "department_id"))
     private List<Department> departmentList;
 
-    @JsonIgnore
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "student_course",
             joinColumns = @JoinColumn(name = "course_id"),
@@ -66,5 +69,29 @@ public class Course {
 
     public void setCourseCredit(double courseCredit) {
         this.courseCredit = courseCredit;
+    }
+
+    public List<Department> getDepartmentList() {
+        return departmentList;
+    }
+
+    public void setDepartmentList(List<Department> departmentList) {
+        this.departmentList = departmentList;
+    }
+
+    public List<Student> getStudentList() {
+        return studentList;
+    }
+
+    public void setStudentList(List<Student> studentList) {
+        this.studentList = studentList;
+    }
+
+    public Boolean getExist() {
+        return isExist;
+    }
+
+    public void setExist(Boolean exist) {
+        isExist = exist;
     }
 }

@@ -3,6 +3,7 @@ package com.synesisit.courseManagement.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.persistence.criteria.Expression;
 import java.util.List;
 
 @Entity
@@ -11,10 +12,15 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "student_id", nullable = false)
     private Long studentId;
-    @Column(name = "student_name", nullable = false)
-    private String studentName;
+    @Column(name = "student_first_name", nullable = false)
+    private String studentFirstName;
+    @Column(name = "student_last_name", nullable = false)
+    private String studentLastName;
+    @Column(name = "is_exist")
+    private boolean isExist = true;
 
-    //Entity Relations
+
+//Entity Relations
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
@@ -32,6 +38,7 @@ public class Student {
 
 
 
+
     public Long getStudentId() {
         return studentId;
     }
@@ -40,13 +47,6 @@ public class Student {
         this.studentId = studentId;
     }
 
-    public String getStudentName() {
-        return studentName;
-    }
-
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
-    }
 
     public Department getDepartment() {
         return department;
@@ -54,6 +54,38 @@ public class Student {
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    public boolean isExist() {
+        return isExist;
+    }
+
+    public void setExist(boolean exist) {
+        isExist = exist;
+    }
+
+    public List<Course> getCourseList() {
+        return courseList;
+    }
+
+    public void setCourseList(List<Course> courseList) {
+        this.courseList = courseList;
+    }
+
+    public String getStudentFirstName() {
+        return studentFirstName;
+    }
+
+    public void setStudentFirstName(String studentFirstName) {
+        this.studentFirstName = studentFirstName;
+    }
+
+    public String getStudentLastName() {
+        return studentLastName;
+    }
+
+    public void setStudentLastName(String studentLastName) {
+        this.studentLastName = studentLastName;
     }
 
 
