@@ -20,14 +20,14 @@ public class Department {
     private String departmentCode;
 
     // Entity Relations
-
-   @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "student_department",
             joinColumns = @JoinColumn(name = "department_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id"))
     private List<Student> studentList;
 
-
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "course_department",
             joinColumns = @JoinColumn(name = "department_id"),
