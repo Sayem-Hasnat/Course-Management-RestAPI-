@@ -23,14 +23,14 @@ public class Course {
 
     //Entity Relations
 
-    @JsonIgnore
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "department_course",
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "department_id"))
     private List<Department> departmentList;
 
-    @JsonIgnore
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "student_course",
             joinColumns = @JoinColumn(name = "course_id"),

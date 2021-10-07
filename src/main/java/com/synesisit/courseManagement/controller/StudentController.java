@@ -15,6 +15,7 @@ public class StudentController {
 
     @PostMapping("/student")
     public Student addStudent(@RequestBody Student studentRequest) {
+        System.out.println("worked");
         studentService.addStudent(studentRequest);
         return studentRequest;
     }
