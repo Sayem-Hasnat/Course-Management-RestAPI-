@@ -18,7 +18,7 @@ public class StudentCriteriaRepositoryImpl implements StudentCriteriaRepository 
     @Autowired
     EntityManager entityManager;
 
-    // constructor
+    // Method  Criteria Repository For Student
     @Override
     public List<Student> findStudentByStudentFirstNameAndStudentLastName(String studentFirstName, String studentLastName) {
 

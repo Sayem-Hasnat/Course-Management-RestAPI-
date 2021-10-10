@@ -42,6 +42,8 @@ public class StudentController {
         return  studentService.updateStudent(studentId,studentRequest);
     }
 
+
+    // Implemented Criteria Query API
     @GetMapping("/student/{firstname}/{lastname}")
     public List<Student> findStudentByFirstNameLastName(@PathVariable("firstName") String firstName,
                                                         @PathVariable("lastName") String lastName){
