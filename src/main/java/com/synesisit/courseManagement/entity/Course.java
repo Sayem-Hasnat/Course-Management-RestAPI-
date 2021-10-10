@@ -2,12 +2,14 @@ package com.synesisit.courseManagement.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.zaxxer.hikari.util.ConcurrentBag;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Course {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "course_id", nullable = false)
@@ -24,18 +26,22 @@ public class Course {
     //Entity Relations
 
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinTable(name = "department_course",
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "department_id"))
     private List<Department> departmentList;
 
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinTable(name = "student_course",
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id"))
     private List<Student> studentList;
+
+    public  void enrolledStudents(Student student){
+        studentList.add(student);
+    }
 
     //Getter Setter
 

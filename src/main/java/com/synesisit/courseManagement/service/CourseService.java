@@ -1,7 +1,9 @@
 package com.synesisit.courseManagement.service;
 
 import com.synesisit.courseManagement.entity.Course;
+import com.synesisit.courseManagement.entity.Student;
 import com.synesisit.courseManagement.repository.CourseRepository;
+import com.synesisit.courseManagement.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ public class CourseService {
 
     @Autowired
     CourseRepository courseRepository;
+    @Autowired
+    StudentRepository studentRepository;
 
     public List<Course> getAllCourse() {
         return courseRepository.findAllByIsExistTrue();
@@ -43,6 +47,13 @@ public class CourseService {
 
         courseRepository.save(course);
         return courseRepository.findById(courseId).get();
+    }
+
+    public Course addStudentToCourse(Long courseId, Long studentId) {
+        Course course = courseRepository.findById(courseId).get();
+        Student student = studentRepository.findById(studentId).get();
+        course.enrolledStudents(student);
+        return courseRepository.save(course);
     }
 }
 

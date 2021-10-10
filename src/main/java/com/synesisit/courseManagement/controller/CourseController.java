@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static sun.misc.Version.print;
 
 @RestController
 public class CourseController {
@@ -40,6 +39,13 @@ public class CourseController {
         return courseService.updateCourseById(courseId, courseRequestBody);
     }
 
+    @PutMapping("/{courseId}/students/{studentId}")
+    Course addStudentToCourse(
+            @PathVariable Long courseId,
+            @PathVariable Long studentId
+    ) {
+        return courseService.addStudentToCourse(courseId, studentId);
+    }
 
 
 }

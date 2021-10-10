@@ -17,16 +17,6 @@ public class StudentService {
     public Student addStudent(Student studentRequest) {
         return studentRepository.save(studentRequest);
 
-     /*   Student student = studentRepository.save(studentRequest);
-        List<Course> courseList;
-        for(Course course : studentRequest.getCourseList()){
-            courseRepository.save(course);
-        }
-          return student;
-        */
-        //student.setCo;
-
-        // Course course = courseRepository.saveAll(studentRequest.getCourseList());
 
     }
 
@@ -69,3 +59,16 @@ public class StudentService {
 
 
 }
+
+
+
+     /*   Student student = studentRepository.save(studentRequest);
+        List<Course> courseList;
+        for(Course course : studentRequest.getCourseList()){
+            courseRepository.save(course);
+        }
+          return student;
+        */
+//student.setCo;
+
+// Course course = courseRepository.saveAll(studentRequest.getCourseList());

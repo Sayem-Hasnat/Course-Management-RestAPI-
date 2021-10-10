@@ -3,6 +3,8 @@ package com.synesisit.courseManagement.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -20,15 +22,16 @@ public class Department {
     private String departmentCode;
 
     // Entity Relations
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY)
+   // @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+
     @JoinTable(name = "student_department",
             joinColumns = @JoinColumn(name = "department_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id"))
     private List<Student> studentList;
 
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY)
+   // @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinTable(name = "course_department",
             joinColumns = @JoinColumn(name = "department_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id"))
