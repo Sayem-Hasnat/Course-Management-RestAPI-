@@ -49,6 +49,9 @@ public class CourseService {
         return courseRepository.findById(courseId).get();
     }
 
+
+    // Service to Insert relational mapped  data ( most Important)
+
     public Course addStudentToCourse(Long courseId, Long studentId) {
         Course course = courseRepository.findById(courseId).get();
         Student student = studentRepository.findById(studentId).get();
