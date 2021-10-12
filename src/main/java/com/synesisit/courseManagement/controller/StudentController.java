@@ -15,43 +15,46 @@ public class StudentController {
 
     @PostMapping("/student")
     public Student addStudent(@RequestBody Student studentRequest) {
-        System.out.println("worked");
         studentService.addStudent(studentRequest);
         return studentRequest;
     }
 
     @PostMapping("/student/list")
-    public List<Student> addStudentList(@RequestBody List<Student>  studentRequest) {
+    public List<Student> addStudentList(@RequestBody List<Student> studentRequest) {
         studentService.addStudentList(studentRequest);
         return studentRequest;
     }
 
     @GetMapping("/student/list")
-    public List<Student> getStudentAll(){
-      return  studentService.getStudentAll();
+    public List<Student> getStudentAll() {
+        return studentService.getStudentAll();
     }
 
     @GetMapping("/student/{studentId}")
-    public Student getSingleStudent(@PathVariable("studentId") Long studentId){
-      return  studentService.getSingleStudent(studentId);
+    public Student getSingleStudent(@PathVariable("studentId") Long studentId) {
+        return studentService.getSingleStudent(studentId);
     }
 
     @PutMapping("/student/{studentId}")
     public Student updateStudent(@PathVariable("studentId") Long studentId,
-                                 @RequestBody Student studentRequest){
-        return  studentService.updateStudent(studentId,studentRequest);
+                                 @RequestBody Student studentRequest) {
+        return studentService.updateStudent(studentId, studentRequest);
     }
 
+<<<<<<< HEAD
 
     // Implemented Criteria Query API
     @GetMapping("/student/{firstname}/{lastname}")
     public List<Student> findStudentByFirstNameLastName(@PathVariable("firstName") String firstName,
                                                         @PathVariable("lastName") String lastName){
+=======
+    @GetMapping("/student/{studentFirstName}/{studentLastName}")
+    public List<Student> findStudentByFirstNameLastName(@PathVariable("firstName") String studentFirstName,
+                                                        @PathVariable("lastName") String studentLastName) {
+>>>>>>> office
 
-        return studentService.findByFirstNameLastName(firstName,lastName);
+        return studentService.findByFirstNameLastName(studentFirstName, studentLastName);
     }
-
-
 
 
 }

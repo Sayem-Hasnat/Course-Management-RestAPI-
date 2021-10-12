@@ -53,11 +53,16 @@ public class StudentService {
     }
 
 
+<<<<<<< HEAD
     // Service for Criteria API
 
     public List<Student> findByFirstNameLastName(String firstName, String lastName) {
         List<Student> studentByFirstNameLastName = studentRepository.findStudentByStudentFirstNameAndStudentLastName(firstName, lastName);
         return studentByFirstNameLastName;
+=======
+    public List<Student> findByFirstNameLastName(String studentFirstName,String studentLastName) {
+        return studentRepository.findStudentByStudentFirstNameAndStudentLastName(studentFirstName, studentLastName);
+>>>>>>> office
     }
 
 
