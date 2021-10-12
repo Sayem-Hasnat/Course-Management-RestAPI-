@@ -38,13 +38,7 @@ public class DepartmentController {
         return departmentService.addStudentToDepartment(departmentId, studentId);
     }
 
-    @PutMapping("/{departmentId}/department/{courseId}")
-    Department addCourseToDepartment(
-            @PathVariable Long departmentId,
-            @PathVariable Long courseId
-    ) {
-        return departmentService.addCourseToDepartment(departmentId, courseId);
-    }
+
 
 
 }

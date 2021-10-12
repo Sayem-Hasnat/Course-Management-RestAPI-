@@ -44,6 +44,7 @@ public class DepartmentService {
         return departmentRepository.save(department);
     }
 
+    // if need to add course from department
     public Department addCourseToDepartment(Long departmentId, Long courseId) {
         Department department = departmentRepository.findById(departmentId).get();
         Course course = courseRepository.findById(courseId).get();

@@ -60,7 +60,7 @@ public class CourseService {
         return courseRepository.save(course);
     }
 
-    public Course DepartmentToCourse(Long courseId, Long departmentId) {
+    public Course addDepartmentToCourse(Long courseId, Long departmentId) {
         Course course = courseRepository.findById(courseId).get();
         Department department = departmentRepository.findById(departmentId).get();
         course.enrolledDepartment(department);

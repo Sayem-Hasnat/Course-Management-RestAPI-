@@ -52,7 +52,7 @@ public class CourseController {
             @PathVariable Long courseId,
             @PathVariable Long departmentId
     ) {
-        return courseService.addStudentToCourse(courseId, departmentId);
+        return courseService.addDepartmentToCourse(courseId, departmentId);
     }
 
 
