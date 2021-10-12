@@ -15,42 +15,38 @@ public class StudentController {
 
     @PostMapping("/student")
     public Student addStudent(@RequestBody Student studentRequest) {
-        System.out.println("worked");
         studentService.addStudent(studentRequest);
         return studentRequest;
     }
 
     @PostMapping("/student/list")
-    public List<Student> addStudentList(@RequestBody List<Student>  studentRequest) {
+    public List<Student> addStudentList(@RequestBody List<Student> studentRequest) {
         studentService.addStudentList(studentRequest);
         return studentRequest;
     }
 
     @GetMapping("/student/list")
-    public List<Student> getStudentAll(){
-        System.out.println("Hello from Controller ");
-      return  studentService.getStudentAll();
+    public List<Student> getStudentAll() {
+        return studentService.getStudentAll();
     }
 
     @GetMapping("/student/{studentId}")
-    public Student getSingleStudent(@PathVariable("studentId") Long studentId){
-      return  studentService.getSingleStudent(studentId);
+    public Student getSingleStudent(@PathVariable("studentId") Long studentId) {
+        return studentService.getSingleStudent(studentId);
     }
 
     @PutMapping("/student/{studentId}")
     public Student updateStudent(@PathVariable("studentId") Long studentId,
-                                 @RequestBody Student studentRequest){
-        return  studentService.updateStudent(studentId,studentRequest);
+                                 @RequestBody Student studentRequest) {
+        return studentService.updateStudent(studentId, studentRequest);
     }
 
     @GetMapping("/student/{studentFirstName}/{studentLastName}")
     public List<Student> findStudentByFirstNameLastName(@PathVariable("firstName") String studentFirstName,
-                                                        @PathVariable("lastName") String studentLastName){
+                                                        @PathVariable("lastName") String studentLastName) {
 
-        return studentService.findByFirstNameLastName(studentFirstName,studentLastName);
+        return studentService.findByFirstNameLastName(studentFirstName, studentLastName);
     }
-
-
 
 
 }
