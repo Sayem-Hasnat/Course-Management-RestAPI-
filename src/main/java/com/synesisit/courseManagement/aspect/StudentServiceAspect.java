@@ -22,6 +22,5 @@ public class StudentServiceAspect {
         System.out.println("Before method:" + joinPoint.getSignature());
         logger.info("**** Staring - " + joinPoint.getSignature().getName());
         logger.info("**** With parameter - " + Arrays.toString(joinPoint.getArgs()));
-
     }
 }
