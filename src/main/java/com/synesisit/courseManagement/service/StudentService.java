@@ -31,6 +31,7 @@ public class StudentService {
     public Student getSingleStudent(Long studentId) {
         //  studentRepository.findById(studentId).get();
         Student student = null;
+
         if (studentRepository.findById(studentId).get().isExist() == true) {
             student = studentRepository.findById(studentId).get();
         } else {
