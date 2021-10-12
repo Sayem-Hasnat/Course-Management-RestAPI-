@@ -28,6 +28,7 @@ public class StudentController {
 
     @GetMapping("/student/list")
     public List<Student> getStudentAll(){
+        System.out.println("Hello from Controller ");
       return  studentService.getStudentAll();
     }
 
