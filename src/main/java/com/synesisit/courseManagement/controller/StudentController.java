@@ -1,5 +1,6 @@
 package com.synesisit.courseManagement.controller;
 
+import com.synesisit.courseManagement.entity.Department;
 import com.synesisit.courseManagement.entity.Student;
 import com.synesisit.courseManagement.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,14 @@ public class StudentController {
 >>>>>>> office
 
         return studentService.findByFirstNameLastName(studentFirstName, studentLastName);
+    }
+
+    @PutMapping("/{studentId}/student/{departmentId}")
+    Student addDepartmentToStudent(
+            @PathVariable Long studentId,
+            @PathVariable Long departmentId
+    ) {
+        return studentService.addDepartmentToStudent(studentId, departmentId);
     }
 
 

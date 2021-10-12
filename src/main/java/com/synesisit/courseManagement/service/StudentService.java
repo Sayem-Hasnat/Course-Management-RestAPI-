@@ -1,6 +1,9 @@
 package com.synesisit.courseManagement.service;
+import com.synesisit.courseManagement.entity.Course;
+import com.synesisit.courseManagement.entity.Department;
 import com.synesisit.courseManagement.entity.Student;
 import com.synesisit.courseManagement.repository.CourseRepository;
+import com.synesisit.courseManagement.repository.DepartmentRepository;
 import com.synesisit.courseManagement.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +16,8 @@ public class StudentService {
     private StudentRepository studentRepository;
     @Autowired
     private CourseRepository courseRepository;
+    @Autowired
+    private DepartmentRepository departmentRepository;
 
     public Student addStudent(Student studentRequest) {
         return studentRepository.save(studentRequest);
@@ -66,5 +71,14 @@ public class StudentService {
     }
 
 
+    public Student addDepartmentToStudent(Long studentId, Long departmentId) {
+        Student student = studentRepository.findById(studentId).get();
+        Department department = departmentRepository.findById(departmentId).get();
+        student.setDepartment(department);
+        department.enrolledStudents(student);
+        departmentRepository.save(department);
+        return studentRepository.save(student);
+
+    }
 }
 
