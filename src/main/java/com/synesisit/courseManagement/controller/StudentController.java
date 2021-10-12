@@ -42,11 +42,11 @@ public class StudentController {
         return  studentService.updateStudent(studentId,studentRequest);
     }
 
-    @GetMapping("/student/{firstname}/{lastname}")
-    public List<Student> findStudentByFirstNameLastName(@PathVariable("firstName") String firstName,
-                                                        @PathVariable("lastName") String lastName){
+    @GetMapping("/student/{studentFirstName}/{studentLastName}")
+    public List<Student> findStudentByFirstNameLastName(@PathVariable("firstName") String studentFirstName,
+                                                        @PathVariable("lastName") String studentLastName){
 
-        return studentService.findByFirstNameLastName(firstName,lastName);
+        return studentService.findByFirstNameLastName(studentFirstName,studentLastName);
     }
 
 

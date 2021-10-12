@@ -26,13 +26,12 @@ public class StudentCriteriaRepositoryImpl implements StudentCriteriaRepository 
         CriteriaQuery<Student> criteriaQuery = criteriaBuilder.createQuery(Student.class);
 
         Root<Student> studentRoot = criteriaQuery.from(Student.class);
-        Predicate firstNamePredicate = criteriaBuilder.equal(studentRoot.get("firstName"), studentFirstName);
-        Predicate lastNamePredicate = criteriaBuilder.equal(studentRoot.get("lastName"), studentLastName);
+        Predicate firstNamePredicate = criteriaBuilder.equal(studentRoot.get("studentFirstName"), studentFirstName);
+        Predicate lastNamePredicate = criteriaBuilder.equal(studentRoot.get("studentLastName"), studentLastName);
         criteriaQuery.where(firstNamePredicate, lastNamePredicate);
 
         TypedQuery<Student> studentTypedQuery = entityManager.createQuery(criteriaQuery);
         return studentTypedQuery.getResultList();
-
 
     }
 
