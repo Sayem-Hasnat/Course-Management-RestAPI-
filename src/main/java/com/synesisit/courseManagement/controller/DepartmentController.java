@@ -30,7 +30,7 @@ public class DepartmentController {
         return departmentService.getSingleDepartment(departmentId);
     }
 
-    @PutMapping("/{departmentId}/students/{studentId}")
+    @PutMapping("/{departmentId}/department/{studentId}")
     Department addStudentToDepartment(
             @PathVariable Long departmentId,
             @PathVariable Long studentId
@@ -38,7 +38,7 @@ public class DepartmentController {
         return departmentService.addStudentToDepartment(departmentId, studentId);
     }
 
-    @PutMapping("/{departmentId}/students/{courseId}")
+    @PutMapping("/{departmentId}/department/{courseId}")
     Department addCourseToDepartment(
             @PathVariable Long departmentId,
             @PathVariable Long courseId

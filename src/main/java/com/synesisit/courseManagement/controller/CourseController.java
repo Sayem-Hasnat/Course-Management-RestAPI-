@@ -39,7 +39,7 @@ public class CourseController {
         return courseService.updateCourseById(courseId, courseRequestBody);
     }
 
-    @PutMapping("/{courseId}/students/{studentId}")
+    @PutMapping("/{courseId}/course/{studentId}")
     Course addStudentToCourse(
             @PathVariable Long courseId,
             @PathVariable Long studentId
@@ -47,7 +47,7 @@ public class CourseController {
         return courseService.addStudentToCourse(courseId, studentId);
     }
 
-    @PutMapping("/{courseId}/students/{departmentId}")
+    @PutMapping("/{courseId}/course/{departmentId}")
     Course addDepartmentToCourse(
             @PathVariable Long courseId,
             @PathVariable Long departmentId
