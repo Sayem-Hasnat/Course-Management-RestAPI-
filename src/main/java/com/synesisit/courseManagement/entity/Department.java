@@ -61,4 +61,12 @@ public class Department {
     public void setDepartmentCode(String departmentCode) {
         this.departmentCode = departmentCode;
     }
+
+    public void enrolledStudents(Student student) {
+        studentList.add(student);
+    }
+
+    public void enrolledCourseList(Course course){
+        courseList.add(course);
+    }
 }

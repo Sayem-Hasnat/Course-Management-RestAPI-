@@ -42,6 +42,7 @@ public class Course {
     public  void enrolledStudents(Student student){
         studentList.add(student);
     }
+    public  void enrolledDepartment(Department department) {departmentList.add(department);}
 
     //Getter Setter
 
