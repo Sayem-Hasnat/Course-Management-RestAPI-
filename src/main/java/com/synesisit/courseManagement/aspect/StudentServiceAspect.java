@@ -1,6 +1,7 @@
 package com.synesisit.courseManagement.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
@@ -18,9 +19,19 @@ public class StudentServiceAspect {
     @Before(value = "execution(* com.synesisit.courseManagement.service.StudentService.*(..))")
     public void before(JoinPoint joinPoint) {
         System.out.println("Hello From Aspect");
-        logger.info("Log Message from StudentServiceAspect");
+        logger.info("Log Message from StudentServiceAspect before method");
         System.out.println("Before method:" + joinPoint.getSignature());
         logger.info("**** Staring - " + joinPoint.getSignature().getName());
         logger.info("**** With parameter - " + Arrays.toString(joinPoint.getArgs()));
     }
+
+    @After(value = "execution(* com.synesisit.courseManagement.service.StudentService.*(..))")
+    public void after(JoinPoint joinPoint) {
+        System.out.println("Hello From Aspect");
+        logger.info("Log Message from StudentServiceAspect after method");
+        System.out.println("Before method:" + joinPoint.getSignature());
+        logger.info("**** Staring - " + joinPoint.getSignature().getName());
+        logger.info("**** With parameter - " + Arrays.toString(joinPoint.getArgs()));
+    }
+
 }
