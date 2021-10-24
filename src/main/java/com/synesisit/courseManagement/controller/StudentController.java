@@ -20,7 +20,7 @@ public class StudentController {
         return studentRequest;
     }
 
-    @PostMapping("/student/list")
+    @PostMapping("/students")
     public List<Student> addStudentList(@RequestBody List<Student> studentRequest) {
         studentService.addStudentList(studentRequest);
         return studentRequest;
