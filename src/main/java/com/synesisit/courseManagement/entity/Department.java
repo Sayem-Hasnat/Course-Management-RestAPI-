@@ -1,11 +1,6 @@
 package com.synesisit.courseManagement.entity;
 
 
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -22,7 +17,7 @@ public class Department {
     private String departmentCode;
 
     // Entity Relations
-   // @JsonIgnore
+    // @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 
     @JoinTable(name = "student_department",
@@ -30,8 +25,14 @@ public class Department {
             inverseJoinColumns = @JoinColumn(name = "student_id"))
     private List<Student> studentList;
 
-   // @JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "teacher_department",
+            joinColumns = @JoinColumn(name = "department_id"),
+            inverseJoinColumns = @JoinColumn(name = "teacher_id"))
+    private List<Teacher> teacherList;
+
+    // @JsonIgnore
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "course_department",
             joinColumns = @JoinColumn(name = "department_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id"))
@@ -66,7 +67,11 @@ public class Department {
         studentList.add(student);
     }
 
-    public void enrolledCourseList(Course course){
+    public void enrolledCourseList(Course course) {
         courseList.add(course);
+    }
+
+    public void enrolledTeacher(Teacher teacher) {
+        teacherList.add(teacher);
     }
 }

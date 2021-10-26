@@ -1,9 +1,7 @@
 package com.synesisit.courseManagement.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import javax.persistence.criteria.Expression;
 import java.util.List;
 
 @Entity
@@ -22,21 +20,19 @@ public class Student {
 
 //Entity Relations
 
-   // @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    // @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "department_student",
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "department_id"))
     private Department department;
 
     //@JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "course_student",
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id"))
     private List<Course> courseList;
-
-
 
 
     public Long getStudentId() {
@@ -87,7 +83,6 @@ public class Student {
     public void setStudentLastName(String studentLastName) {
         this.studentLastName = studentLastName;
     }
-
 
 
 }
