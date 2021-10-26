@@ -1,31 +1,39 @@
 package com.synesisit.courseManagement.entity;
 
 import javax.persistence.*;
-
-@Entity(name="RoleType")
-
+import org.hibernate.annotations.NaturalId;
+@Entity(name = "RoleType")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "role_id", nullable = false)
-    private Long roleId;
-    @Column(name = "Authority", nullable = false)
-    private String Authority;
+    private Long id;
 
+    @Enumerated(EnumType.STRING)
+    @NaturalId
+    @Column(length = 60)
+    private RoleName name;
 
-    public String getAuthority() {
-        return Authority;
+    public Role() {
+
     }
 
-    public void setAuthority(String authority) {
-        Authority = authority;
+    public Role(RoleName name) {
+        this.name = name;
     }
 
-    public Long getRoleId() {
-        return roleId;
+    public Long getId() {
+        return id;
     }
 
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public RoleName getName() {
+        return name;
+    }
+
+    public void setName(RoleName name) {
+        this.name = name;
     }
 }
