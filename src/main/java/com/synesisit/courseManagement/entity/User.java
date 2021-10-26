@@ -1,6 +1,7 @@
 package com.synesisit.courseManagement.entity;
 
 
+import com.synesisit.courseManagement.audit.DateAudit;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
@@ -19,7 +20,7 @@ import java.util.Set;
                 "email"
         })
 })
-public class User {
+public class User extends DateAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
