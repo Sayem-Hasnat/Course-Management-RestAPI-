@@ -1,57 +1,110 @@
 package com.synesisit.courseManagement.entity;
 
 
+import org.hibernate.annotations.NaturalId;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
 
-@Entity(name = "User_Details")
-
+@Entity
+@Table(name = "users", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {
+                "username"
+        }),
+        @UniqueConstraint(columnNames = {
+                "email"
+        })
+})
 public class User {
     @Id
-    @Column(name = "user_id", nullable = false)
-    private Long userId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name = "user_name", nullable = false)
-    private String userName;
+    @NotBlank
+    @Size(max = 40)
+    private String name;
 
-    @Column(name = "user_pass", nullable = false)
-    private String userPass;
+    @NotBlank
+    @Size(max = 15)
+    private String username;
 
-    @Column(name = "user_mail", nullable = false)
-    private String userMail;
+    @NaturalId
+    @NotBlank
+    @Size(max = 40)
+    @Email
+    private String email;
 
+    @NotBlank
+    @Size(max = 100)
+    private String password;
 
-    public Long getUserId() {
-        return userId;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+
+    public User() {
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public User(String name, String username, String email, String password) {
+        this.name = name;
+        this.username = username;
+        this.email = email;
+        this.password = password;
     }
 
-    public String getUserName() {
-        return userName;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getUserPass() {
-        return userPass;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserPass(String userPass) {
-        this.userPass = userPass;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getUserMail() {
-        return userMail;
+    public String getName() {
+        return name;
     }
 
-    public void setUserMail(String userMail) {
-        this.userMail = userMail;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }
+
+
