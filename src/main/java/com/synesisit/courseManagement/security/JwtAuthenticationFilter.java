@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
+
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -54,3 +55,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         return null;
     }
 }
+
+
+/*In the above filter, We’re first parsing the JWT retrieved from the Authorization header of the request and obtaining the user’s Id. After that, We’re loading the user’s details from the database and setting the authentication inside spring security’s context.
+
+Note that, the database hit in the above filter is optional. You could also encode the user’s username and roles inside JWT claims and create the UserDetails object by parsing those claims from the JWT. That would avoid the database hit.
+
+However, Loading the current details of the user from the database might still be helpful. For example, you might wanna disallow login with this JWT if the user’s role has changed, or the user has updated his password after the creation of this JWT.*/
